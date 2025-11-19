@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo - Shirts&Co</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="catalogo.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html">SHIRTS&CO</a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html#coleccion">LA COLECCIÓN</a>
+                <a href="index.html#personalizacion">PERSONALIZACIÓN</a>
+                <a href="index.html#empresas">PARA EMPRESAS</a>
+                <a href="index.html#productos">PRODUCTOS</a>
+            </div>
+            <div class="nav-cta">
+                <button class="btn-primary" onclick="showContactForm()">DISEÑA TU REMERA</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Catalog Hero -->
+    <section class="catalog-hero">
+        <div class="catalog-hero-content">
+            <h1 class="catalog-title">Nuestra Colección</h1>
+            <p class="catalog-subtitle">DISEÑOS EXCLUSIVOS • CALIDAD PREMIUM • PERSONALIZACIÓN ILIMITADA</p>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-bar">
+                <div class="filter-group">
+                    <label>Categoría:</label>
+                    <select id="categoryFilter">
+                        <option value="all">Todas</option>
+                        <option value="basicas">Básicas</option>
+                        <option value="premium">Premium</option>
+                        <option value="deportivas">Deportivas</option>
+                        <option value="oversized">Oversized</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Talla:</label>
+                    <select id="sizeFilter">
+                        <option value="all">Todas</option>
+                        <option value="xs">XS</option>
+                        <option value="s">S</option>
+                        <option value="m">M</option>
+                        <option value="l">L</option>
+                        <option value="xl">XL</option>
+                        <option value="xxl">XXL</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Color:</label>
+                    <select id="colorFilter">
+                        <option value="all">Todos</option>
+                        <option value="white">Blanco</option>
+                        <option value="black">Negro</option>
+                        <option value="gray">Gris</option>
+                        <option value="navy">Azul Marino</option>
+                        <option value="red">Rojo</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Precio:</label>
+                    <select id="priceFilter">
+                        <option value="all">Todos</option>
+                        <option value="low">Hasta $3000</option>
+                        <option value="mid">$3000 - $5000</option>
+                        <option value="high">Más de $5000</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="products-section">
+        <div class="container">
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Detail Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="modalImage" src="" alt="">
+                </div>
+                <div class="modal-info">
+                    <h2 id="modalTitle"></h2>
+                    <p id="modalDescription"></p>
+                    <div class="modal-price" id="modalPrice"></div>
+                    <div class="modal-stock" id="modalStock"></div>
+                    
+                    <div class="modal-options">
+                        <div class="option-group">
+                            <label>Talla:</label>
+                            <div class="size-selector" id="sizeSelector">
+                                <button class="size-btn" data-size="xs">XS</button>
+                                <button class="size-btn" data-size="s">S</button>
+                                <button class="size-btn" data-size="m">M</button>
+                                <button class="size-btn" data-size="l">L</button>
+                                <button class="size-btn" data-size="xl">XL</button>
+                                <button class="size-btn" data-size="xxl">XXL</button>
+                            </div>
+                        </div>
+                        
+                        <div class="option-group">
+                            <label>Color:</label>
+                            <div class="color-selector" id="colorSelector">
+                                <button class="color-btn" data-color="white" style="background: #ffffff; border: 1px solid #ddd;"></button>
+                                <button class="color-btn" data-color="black" style="background: #000000;"></button>
+                                <button class="color-btn" data-color="gray" style="background: #888888;"></button>
+                                <button class="color-btn" data-color="navy" style="background: #001f3f;"></button>
+                                <button class="color-btn" data-color="red" style="background: #dc3545;"></button>
+                            </div>
+                        </div>
+                        
+                        <div class="option-group">
+                            <label>Cantidad:</label>
+                            <div class="quantity-selector">
+                                <button class="qty-btn" onclick="changeQuantity(-1)">-</button>
+                                <input type="number" id="quantity" value="1" min="1" max="10">
+                                <button class="qty-btn" onclick="changeQuantity(1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-add-cart" onclick="addToCart()">AGREGAR AL CARRITO</button>
+                    <button class="btn-customize" onclick="customizeProduct()">PERSONALIZAR DISEÑO</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Form Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeContactForm()">&times;</span>
+            <div class="modal-body">
+                <div class="contact-form">
+                    <h2>Diseña Tu Remera</h2>
+                    <p>Completa el formulario y nos pondremos en contacto contigo</p>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label>Nombre completo:</label>
+                            <input type="text" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email:</label>
+                            <input type="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Teléfono:</label>
+                            <input type="tel" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Describe tu diseño:</label>
+                            <textarea name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">ENVIAR SOLICITUD</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-main">
+                <h2 class="footer-title">REMERAS PERSONALIZADAS DE ALTA CALIDAD PARA VOS, TU EMPRENDIMIENTO O TU EMPRESA</h2>
+                <div class="footer-links">
+                    <a href="index.html#coleccion">LA COLECCIÓN</a>
+                    <a href="index.html#personalizacion">PERSONALIZACIÓN</a>
+                    <a href="index.html#empresas">PARA EMPRESAS</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; SHIRTS&CO 2025</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="script.js"></script>
+    <script src="catalogo.js"></script>
+</body>
+</html>
