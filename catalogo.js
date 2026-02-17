@@ -1,6 +1,3 @@
-// Catalog Page JavaScript
-
-// Sample products (fallback si Firebase no está configurado)
 const sampleProducts = [
     {
         id: '1',
@@ -88,7 +85,6 @@ let currentProduct = null;
 let selectedSize = null;
 let selectedColor = null;
 
-// Initialize catalog
 async function initCatalog() {
     showLoading();
     
@@ -111,13 +107,11 @@ async function initCatalog() {
     renderProducts();
 }
 
-// Show loading state
 function showLoading() {
     const grid = document.getElementById('productsGrid');
     grid.innerHTML = '<div class="loading">Cargando productos...</div>';
 }
 
-// Render products
 function renderProducts() {
     const grid = document.getElementById('productsGrid');
     
@@ -139,7 +133,6 @@ function renderProducts() {
     });
 }
 
-// Create product card
 function createProductCard(product) {
     const card = document.createElement('div');
     card.className = 'product-card';
@@ -165,7 +158,6 @@ function createProductCard(product) {
     return card;
 }
 
-// Get stock status
 function getStockStatus(stock) {
     if (stock > 50) {
         return { class: 'in-stock', text: 'En stock' };
@@ -176,7 +168,6 @@ function getStockStatus(stock) {
     }
 }
 
-// Get badge text
 function getBadgeText(badge) {
     const badges = {
         'new': 'NUEVO',
@@ -186,7 +177,6 @@ function getBadgeText(badge) {
     return badges[badge] || badge.toUpperCase();
 }
 
-// Get category name
 function getCategoryName(category) {
     const categories = {
         'basicas': 'Básicas',
@@ -197,7 +187,6 @@ function getCategoryName(category) {
     return categories[category] || category;
 }
 
-// Open product modal
 function openProductModal(product) {
     currentProduct = product;
     selectedSize = null;
@@ -225,7 +214,6 @@ function closeModal() {
     document.body.style.overflow = 'auto';
 }
 
-// Size selection
 document.addEventListener('click', (e) => {
     if (e.target.classList.contains('size-btn')) {
         document.querySelectorAll('.size-btn').forEach(btn => btn.classList.remove('active'));

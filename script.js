@@ -1,4 +1,3 @@
-// Smooth scroll behavior
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -12,7 +11,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Navbar scroll effect
 const navbar = document.querySelector('.navbar');
 let lastScroll = 0;
 
@@ -28,7 +26,6 @@ window.addEventListener('scroll', () => {
     lastScroll = currentScroll;
 });
 
-// Intersection Observer for fade-in animations
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
@@ -43,7 +40,6 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe all sections for animation
 document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('.intro-section, .feature-section, .about-section, .quality-section, .experience-section, .values-section');
     
@@ -55,7 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Parallax effect for hero section
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     const hero = document.querySelector('.hero-content');
@@ -65,7 +60,6 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Image hover effects enhancement
 const images = document.querySelectorAll('.feature-image img, .exp-image img, .quality-image img');
 
 images.forEach(img => {
@@ -78,7 +72,6 @@ images.forEach(img => {
     });
 });
 
-// Button interactions
 const buttons = document.querySelectorAll('button, .btn-primary, .btn-secondary, .btn-large, .btn-register, .btn-footer');
 
 buttons.forEach(button => {
@@ -103,7 +96,6 @@ buttons.forEach(button => {
     });
 });
 
-// Add ripple styles dynamically
 const style = document.createElement('style');
 style.textContent = `
     button, .btn-primary, .btn-secondary, .btn-large, .btn-register, .btn-footer {
@@ -129,7 +121,6 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Scroll reveal for experience images
 const experienceImages = document.querySelectorAll('.exp-image');
 
 const imageObserver = new IntersectionObserver((entries) => {
@@ -152,7 +143,6 @@ experienceImages.forEach(img => {
     imageObserver.observe(img);
 });
 
-// Mobile menu toggle (for future implementation)
 const createMobileMenu = () => {
     const navLinks = document.querySelector('.nav-links');
     const mobileMenuBtn = document.createElement('button');
@@ -180,7 +170,6 @@ window.addEventListener('resize', () => {
     }
 });
 
-// CTA Button actions
 document.querySelectorAll('.btn-primary, .btn-large, .btn-footer, .btn-register').forEach(btn => {
     btn.addEventListener('click', function() {
         showContactForm();

@@ -1,4 +1,3 @@
-/* Reset y Variables */
 * {
     margin: 0;
     padding: 0;
@@ -24,7 +23,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Navigation */
 .navbar {
     position: fixed;
     top: 0;
@@ -33,9 +31,12 @@ body {
     z-index: 1000;
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
-    padding: 1rem 0;
+    padding: 0.5rem 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     transition: var(--transition);
+    margin-top: 20px;
+    border-radius: 36px;
+    animation: slideInFromBottom 1s ease-out forwards;
 }
 
 .navbar.scrolled {
@@ -112,7 +113,6 @@ body {
     transform: translateY(-2px);
 }
 
-/* Hero Section */
 .hero {
     height: 100vh;
     display: flex;
@@ -143,14 +143,23 @@ body {
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
     z-index: 1;
+    opacity: 0;
+    animation: fadeInOverlay 2s ease-out forwards 1s;
 }
 
 .hero-content {
     text-align: center;
     max-width: 1200px;
-    padding: 0 2rem;
+    padding: 0 2rem;    
     position: relative;
     z-index: 2;
+    opacity: 0;
+    animation: fadeIn 2s ease-out forwards 1s;
+}
+
+.hero-content .hero-title,
+.hero-content .hero-subtitle {
+    animation: none;
 }
 
 .hero-title {
@@ -178,7 +187,8 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-    animation: float 3s ease-in-out infinite;
+    animation: fadeIn 2s ease-out forwards 1s;
+    opacity: 0 ;
     z-index: 2;
 }
 
@@ -201,7 +211,24 @@ body {
     50% { transform: translateY(-10px); }
 }
 
-/* Animations */
+@keyframes slideInFromBottom {
+    0% {
+        transform: translateY(100vh);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInOverlay {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 .fade-in {
     animation: fadeIn 1.2s ease-out;
 }
@@ -221,14 +248,12 @@ body {
     }
 }
 
-/* Container */
 .container {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 4rem;
 }
 
-/* Introduction Section */
 .intro-section {
     padding: 8rem 0;
     background: var(--secondary-color);
@@ -274,7 +299,6 @@ body {
     color: var(--text-secondary);
 }
 
-/* Feature Sections */
 .feature-section {
     padding: 4rem 0;
     background: var(--secondary-color);
@@ -352,7 +376,6 @@ body {
     transform: translateX(10px);
 }
 
-/* About Section */
 .about-section {
     padding: 8rem 0;
     background: var(--secondary-color);
@@ -422,7 +445,6 @@ body {
     color: var(--secondary-color);
 }
 
-/* Quality Section */
 .quality-section {
     padding: 6rem 0;
     background: var(--accent-color);
@@ -466,7 +488,6 @@ body {
     color: var(--text-secondary);
 }
 
-/* Highlight Section */
 .highlight-section {
     padding: 8rem 0;
     background: var(--primary-color);
@@ -501,7 +522,6 @@ body {
     color: var(--primary-color);
 }
 
-/* Experience Section */
 .experience-section {
     padding: 8rem 0;
     background: var(--secondary-color);
@@ -555,7 +575,6 @@ body {
     transform: scale(1.1);
 }
 
-/* Products Catalog */
 .products-catalog {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -641,7 +660,6 @@ body {
     transform: translateY(-2px);
 }
 
-/* Values Section */
 .values-section {
     padding: 8rem 0;
     background: var(--accent-color);
@@ -689,7 +707,6 @@ body {
     color: var(--text-secondary);
 }
 
-/* Final CTA Section */
 .final-cta {
     padding: 8rem 0;
     background: var(--secondary-color);
@@ -788,7 +805,6 @@ body {
     font-weight: 700;
 }
 
-/* Contact Modal */
 .modal {
     display: none;
     position: fixed;
@@ -910,7 +926,6 @@ body {
     transform: translateY(-2px);
 }
 
-/* Footer */
 .footer {
     background: var(--primary-color);
     color: var(--secondary-color);
@@ -999,7 +1014,6 @@ body {
     opacity: 0.7;
 }
 
-/* Responsive Design */
 @media (max-width: 1024px) {
     .nav-container {
         padding: 0 2rem;
